@@ -16,12 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core import views
-
+from core import views as core_views
+from portfolio import views as portfolio_views
+from about import views as about_views
+# el "as" es por la redundancia de nombres
 urlpatterns = [
-    path('', views.home,name='home'),
-    path('about-me/',views.about,name='about-me'),
-    path('portfolio/',views.portfolio,name='portfolio'),
-    path('contact/',views.contact,name='contacto'),
+    path('', core_views.home,name='home'),
+    path('about-me/',about_views.about,name='about-me'),
+    path('portfolio/',portfolio_views.portfolio,name='portfolio'),
+    path('contact/',core_views.contact,name='contacto'),
     path('admin/',admin.site.urls),
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+#Arregla error 404 que no encutra imagen y no muestra display al ver imagen en pag admin.
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

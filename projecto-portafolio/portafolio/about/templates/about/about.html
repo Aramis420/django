@@ -28,34 +28,29 @@
 <div class="row d-flex pt-5">
     <div class="col-12">
         <h2 class="fw-bold">Formación Académica</h2>
-        <h3>Formación Nº 1</h3>
-        <p><strong>Título obtenido:</strong> Lorem ipsum dolor</p>
-        <p><strong>Descripción:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis distinctio atque praesentium fugiat doloremque, repellendus minus nisi enim nam voluptas velit beatae assumenda! Necessitatibus, eum vitae voluptates sunt quasi optio.</p>
+        {%for course in courses%}
+        <h3>{{course.title}}</h3>
+        <p><strong>Título obtenido:</strong>{{course.degree_title}}</p>
+        <p><strong>Descripción:</strong>{{degree.description}}</p>
 
         <hr>
-
-        <h3>Formación Nº 2</h3>
-        <p><strong>Título obtenido:</strong> Lorem ipsum dolor</p>
-        <p><strong>Descripción:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis distinctio atque praesentium fugiat doloremque, repellendus minus nisi enim nam voluptas velit beatae assumenda! Necessitatibus, eum vitae voluptates sunt quasi optio.</p>
-        <hr>
-        <h3>Formación Nº 3</h3>
-        <p><strong>Título obtenido:</strong> Lorem ipsum dolor</p>
-        <p><strong>Descripción:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis distinctio atque praesentium fugiat doloremque, repellendus minus nisi enim nam voluptas velit beatae assumenda! Necessitatibus, eum vitae voluptates sunt quasi optio.</p>
-
-        <hr>
+        {%endfor%}
+        <br>
         <h2 class="fw-bold">Conocimientos</h2>
         <section class="skills" id="skills">
             <div class="skills__container" id="skills">
+                {%for skill in skills%}
                 <div class="card__skills">
                     <div class="skill__thumbnail">
-                        <img class="skill__logo" src={% static 'core/img/skills/html5-svgrepo-com.svg'%} alt="html5">
+                        <img class="skill__logo" src={{skill.image.url}} alt="html5">
                     </div>
 
                     <div class="skill__texto">
-                        <p class="skill__titulo">HTML5</p>
+                        <p class="skill__titulo">{{skill.title}}</p>
                     </div>
                 </div>
-
+                {%endfor%}
+<!--
                 <div class="card__skills">
                     <div class="skill__thumbnail">
                         <img class="skill__logo" src={% static 'core/img/skills/javascript-svgrepo-com.svg'%} alt="html5">
@@ -127,6 +122,6 @@
                         <p class="skill__titulo">PostgreSQL</p>
                     </div>
                 </div>
-
+-->
             </div>
 {%endblock%}
