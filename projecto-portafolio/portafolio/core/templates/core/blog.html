@@ -5,6 +5,12 @@
 {% block image-header %} Noticias {%endblock%}
 
 {%block title-header%} 
+
+{% for c in category %}
+<p><a href="{% url 'category' c.id %}">{{c.name}}</a></p>
+{% endfor %}
+{%endblock%}
+{%block content%}
 <body>
     <h1>Noticias</h1>
 {% for post in posts %}
@@ -15,9 +21,5 @@
 <hr>
 
 {% endfor %}
-{% for c in category %}
-<p><a href="{% url 'category' c.id %}">{{c.name}}</a></p>
-{% endfor %}
-</body>
 {%endblock%}
 </html>
