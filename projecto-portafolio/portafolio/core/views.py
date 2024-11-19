@@ -40,13 +40,13 @@ def contact(request):
 def blog(request):
     posts=Posteo.objects.all()
     category=Clasificacion.objects.all()
-    return render(request,"blog/blog.html",{'posts':posts,
+    return render(request,"core/blog.html",{'posts':posts,
     'category':category})
 
 def category(request,category_id):
     category=get_object_or_404(Clasificacion,id=category_id)
     #category =Clasificacion.objects.get(id=category_id)
     posts=Posteo.objects.filter(classification=category)
-    return render(request,"blog/category.html",{'posts':posts,'category':category})
+    return render(request,"core/category.html",{'posts':posts,'category':category})
 
 
