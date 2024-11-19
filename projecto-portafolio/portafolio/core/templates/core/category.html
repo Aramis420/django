@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<p>{{category}}</p>
+{% for post in posts %}
+<p>Fecha de Publicación: {{post.published|date:"SHORT_DATE_FORMAT"}}</p>
+<p>titulo: {{post.title}}</p>
+<p>Detalle: {{post.content}}</p>
+<p>Autor: {{post.author}}</p>
+<p>Categoria:{{post.classification.all|join:", "}}</p>
+<hr>
+
+{% endfor %}
+</body>
+</html>

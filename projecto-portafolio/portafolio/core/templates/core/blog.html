@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Noticias</h1>
+{% for post in posts %}
+<p>Fecha de Publicación: {{post.published|date:"SHORT_DATE_FORMAT"}}</p>
+<p>titulo: {{post.title}}</p>
+<p>Detalle: {{post.content}}</p>
+<p>Autor: {{post.author}}</p>
+<hr>
+
+{% endfor %}
+{% for c in category %}
+<p><a href="{% url 'category' c.id %}">{{c.name}}</a></p>
+{% endfor %}
+</body>
+</html>
