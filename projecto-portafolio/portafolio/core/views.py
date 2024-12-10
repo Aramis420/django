@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse, redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm
 from .models import Posteo,Clasificacion
@@ -13,6 +14,8 @@ html_cabecera="""
     <li> <a href="/contact/">Contacto</a> </li>
 </ul>
 """
+def editingproj(request):
+    return render(request,'admin/portfolio/project')
 def home(request):
     return render(request,'core/home.html')
 def login(request):
@@ -26,16 +29,16 @@ def register(request):
         user_creation_form = CustomUserCreationForm(data=request.POST)
 
         if user_creation_form.is_valid():
-            user_creation_form.save()
-
-            return redirect('home')
+            user = user_creation_form.save()
+            user
+            user.is_staff = True
+            group = Group.objects.get(name='Team Projectos')  # Cambia "NombreDelGrupo" por el nombre de tu grupo
+            user.groups.add(group)
+            return redirect('login')
         else:
             data['form'] = user_creation_form
 
     return render(request, 'registration/register.html', data)
-@login_required
-def contact(request):
-    return render(request,'core/contact.html')
 
 def blog(request):
     posts=Posteo.objects.all()
@@ -45,7 +48,6 @@ def blog(request):
 
 def category(request,category_id):
     category=get_object_or_404(Clasificacion,id=category_id)
-    #category =Clasificacion.objects.get(id=category_id)
     posts=Posteo.objects.filter(classification=category)
     return render(request,"core/category.html",{'posts':posts,'category':category})
 

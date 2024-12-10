@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from portfolio import views as portfolio_views
 from about import views as about_views
+from contact import views as contact_views
 # el "as" es por la redundancia de nombres
 urlpatterns = [
     path('', include('core.urls')),
     path('about-me/',about_views.about,name='about-me'),
     path('portfolio/',portfolio_views.portfolio,name='portfolio'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path("contact/", contact_views.contact, name="contact"),
     path('admin/',admin.site.urls),
 ]
 

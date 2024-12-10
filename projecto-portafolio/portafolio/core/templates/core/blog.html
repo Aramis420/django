@@ -6,9 +6,18 @@
 
 {%block title-header%} 
 
-{% for c in category %}
-<p><a href="{% url 'category' c.id %}">{{c.name}}</a></p>
-{% endfor %}
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Filtro
+    </a>
+  
+    <ul class="dropdown-menu">
+        {% for c in category %}
+        <p><a href="{% url 'category' c.id %}">{{c.name}}</a></p>
+        {% endfor %}
+    </ul>
+</div>
+
 {%endblock%}
 {%block content%}
 <body>

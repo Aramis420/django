@@ -5,7 +5,12 @@
 {% block image-header %} categoria {%endblock%}
 
 {%block title-header%} 
+
 <p>{{category}}</p>
+
+{%endblock%}
+
+{%block content%} 
 {% for post in posts %}
 <p>Fecha de Publicación: {{post.published|date:"SHORT_DATE_FORMAT"}}</p>
 <p>titulo: {{post.title}}</p>

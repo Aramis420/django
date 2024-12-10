@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core',
     'portfolio.apps.PortfolioConfig',
     'about',
+    'contact',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
@@ -134,3 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+# VARIABLES DE REDIRECCION DE LOGIN Y LOGOUT 
+LOGIN_REDIRECT_URL = '/admin/portfolio/project/'
+LOGOUT_REDIRECT_URL = 'login'
