@@ -29,11 +29,12 @@ def register(request):
         user_creation_form = CustomUserCreationForm(data=request.POST)
 
         if user_creation_form.is_valid():
-            user = user_creation_form.save()
-            user
+            user = user_creation_form.save(commit=False)
             user.is_staff = True
+            user.save()
             group = Group.objects.get(name='Team Projectos')  # Cambia "NombreDelGrupo" por el nombre de tu grupo
             user.groups.add(group)
+            
             return redirect('login')
         else:
             data['form'] = user_creation_form
