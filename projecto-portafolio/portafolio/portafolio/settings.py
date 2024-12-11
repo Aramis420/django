@@ -139,3 +139,13 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 # VARIABLES DE REDIRECCION DE LOGIN Y LOGOUT 
 LOGIN_REDIRECT_URL = '/admin/portfolio/project/'
 LOGOUT_REDIRECT_URL = 'login'
+
+# VARIABLES DE EMAIL
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+
+EMAIL_HOST_USER = '0b47ade9eaf29f'
+
+EMAIL_HOST_PASSWORD = '5e789c06420684'
+
+EMAIL_PORT = '2525'
